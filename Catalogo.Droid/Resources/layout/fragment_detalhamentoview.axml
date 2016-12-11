@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/content_relative_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/transparent_color">
+            <Mvx.MvxImageView
+                android:id="@+id/photo"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                local:MvxBind="ImageUrl Photo" />
+            <View
+                android:id="@+id/separator"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp" />
+            <TextView
+                android:id="@+id/name_details_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separator"
+                android:text="Full HD Flat Smart TV H5103 Series 3"
+                android:layout_marginTop="15dp"
+                android:textAlignment="center"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="25dp"
+                android:textSize="23sp"
+                local:MvxBind="Text Name" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/currency_details_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginStart="25dp"
+                    android:paddingRight="25dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:layout_below="@id/name_details_textview"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:text="R$"
+                    android:textSize="26sp" />
+                <TextView
+                    android:id="@+id/price_details_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="26sp"
+                    android:text="1493,10"
+                    android:layout_toRightOf="@id/currency_details_textview"
+                    android:layout_alignBaseline="@id/currency_details_textview"
+                    android:layout_toEndOf="@id/currency_details_textview"
+                    local:MvxBind="Text Price" />
+                <ToggleButton
+                    android:textOff=""
+                    android:textOn=""
+                    android:id="@+id/favorite"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_alignParentBottom="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:background="@drawable/toggle_star"
+                    local:MvxBind="Checked IsFavorite; Click IsFavoriteChanged"
+                    android:layout_marginBottom="5dp" />
+            </RelativeLayout>
+            <android.support.v7.widget.CardView
+                android:id="@+id/description_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:cardUseCompatPadding="true"
+                tools:cardElevation="4dp"
+                android:layout_margin="10dp"
+                tools:cardCornerRadius="3dp"
+                android:layout_below="@id/price_details_textview">
+                <TextView
+                    android:id="@+id/textview_label_descricao_produto"
+                    android:layout_width="wrap_content"
+                    android:padding="3dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Descrição do produto"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/description_details_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="descrição detalhada do produto etc bla bla"
+                    local:MvxBind="Text Description" />
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_margin="8dp"
+    local:cardElevation="0dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="196.7dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:maxLines="2"
+            android:layout_marginRight="140dp"
+            android:layout_marginEnd="140dp"
+            android:paddingTop="8dp"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:text="40 Full HD Flat Smart TV H5103 Series 5"
+            android:textSize="18dp"
+            local:MvxBind="Text Name" />
+        <Mvx.MvxImageView
+            android:id="@+id/photo"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            local:MvxBind="ImageUrl Photo"
+            android:layout_marginBottom="10dp" />
+        <TextView
+            android:id="@+id/cifrao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="8dp"
+            android:maxLines="3"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="2dp"
+            android:paddingEnd="2dp"
+            android:textSize="14dp"
+            android:text="R$"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1979.10"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            android:layout_toRightOf="@id/cifrao"
+            android:layout_alignBaseline="@id/cifrao"
+            android:layout_toEndOf="@id/cifrao"
+            local:MvxBind="Text Price"
+            android:textColor="@color/black" />
+        <ToggleButton
+            android:textOff=""
+            android:textOn=""
+            android:id="@+id/favorite"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="8dp"
+            android:layout_alignParentBottom="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:background="@drawable/toggle_star"
+            local:MvxBind="Checked IsFavorite; Click IsFavoriteChanged"
+            android:layout_marginBottom="5dp" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
