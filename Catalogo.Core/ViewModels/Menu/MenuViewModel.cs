@@ -27,20 +27,9 @@ namespace Catalogo.Core.ViewModels
             }
         }
 
-        public IMvxCommand ShowHomeCommand
+        private void OnSucesso(ObservableCollection<Categoria> list)
         {
-            get
-            {
-                return new MvxCommand(() =>
-                {
-                    ShowViewModel<CatalogoViewModel>();
-                });
-            }
-        }
-
-        private void OnSucesso(List<Categoria> list)
-        {
-            Categorias = new ObservableCollection<Categoria>(list);
+            Categorias = list;
         }
         private void OnErro(Exception obj)
         {

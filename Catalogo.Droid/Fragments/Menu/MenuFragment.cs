@@ -14,7 +14,6 @@ using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Binding.Droid.Views;
 using MvvmCross.Core.ViewModels;
-using SearchView = Android.Support.V7.Widget.SearchView;
 
 namespace Catalogo.Droid.Fragments
 {
@@ -40,17 +39,20 @@ namespace Catalogo.Droid.Fragments
 
         private void Filtrar(Categoria categoria)
         {
-            if (Activity.GetType() != typeof(MainActivity)) return;
+            var baseFrag = (BaseFragment)Activity.SupportFragmentManager.FindFragmentById(Resource.Id.content_frame);
 
-            var viewModel = ((CatalogoFragment) Activity.SupportFragmentManager.FindFragmentById(Resource.Id.content_frame)).ViewModel;
-
-            if (categoria == null)
-                viewModel.Produtos = viewModel.AllProdutos;
+            if (baseFrag.GetType() == typeof(CatalogoFragment))
+            {
+                var viewModel = ((CatalogoFragment)baseFrag).ViewModel;
+                viewModel.Produtos = categoria == null ? viewModel.AllProdutos : new ObservableCollection<Produto>(viewModel.AllProdutos.Where(p => p.CategoryId == categoria.Id));
+            }
             else
-                viewModel.Produtos =
-                    new ObservableCollection<Produto>(viewModel.AllProdutos.Where(p => p.CategoryId == categoria.Id));
+            {
+                ((MainActivity)Activity).ViewModel.ShowViews();
+            }
 
-            ((MainActivity) Activity).DrawerLayout?.CloseDrawers();
+
+            ((MainActivity)Activity).DrawerLayout?.CloseDrawers();
         }
     }
 }

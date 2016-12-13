@@ -4,7 +4,6 @@ using Catalogo.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Catalogo.Services;
-using Catalogo.ViewModels;
 
 namespace Catalogo.Test
 {

@@ -14,9 +14,13 @@ namespace Catalogo.Core.ViewModels
     {
         public CatalogoViewModel(IDataService dataservice) : base(dataservice)
         {
-            dataservice.LoadProdutos(OnSucesso, OnErro);         
+            IsRefreshing = true;
+            DataService.LoadProdutos(OnSucesso, OnErro);         
         }
-
+        public override void Start()
+        {
+            DataService.LoadProdutos(OnSucesso, OnErro);
+        }
         public ObservableCollection<Produto> AllProdutos;
         private ObservableCollection<Produto> _produtos;
         public ObservableCollection<Produto> Produtos
@@ -29,17 +33,40 @@ namespace Catalogo.Core.ViewModels
             }
         }
 
-        public virtual ICommand ItemSelected
+        public ICommand ItemSelected
         {
             get
             {
-                return new MvxCommand<Produto>(produto => {
+                return new MvxCommand<Produto>(produto =>
+                {
                     ShowViewModel<DetalhamentoViewModel>(produto);
                 });
             }
         }
 
-        private void OnSucesso(List<Produto> list)
+        private bool _isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                RaisePropertyChanged(() => IsRefreshing);
+            }
+        }
+        public ICommand ReloadCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    IsRefreshing = true;
+                    DataService.ReloadProdutos(OnSucesso, OnErro, AllProdutos);
+                });
+            }
+        }
+
+        private void OnSucesso(ObservableCollection<Produto> list)
         {
             Produtos = new ObservableCollection<Produto>(list.Select(produto =>
             {
@@ -51,6 +78,7 @@ namespace Catalogo.Core.ViewModels
             }));
 
             AllProdutos = Produtos;
+            IsRefreshing = false;
         }
         private void OnErro(Exception obj)
         {

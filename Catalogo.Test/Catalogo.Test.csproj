@@ -59,13 +59,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Catalogo\Catalogo\Catalogo.csproj">
-      <Project>{B2CE2ECF-C52A-4D81-990E-921C261D62FF}</Project>
-      <Name>Catalogo</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Catalogo.Core\Catalogo.Core.csproj">
+      <Project>{c23a254a-eec5-4bd7-b1f6-d01060bac88b}</Project>
+      <Name>Catalogo.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
